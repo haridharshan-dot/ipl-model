@@ -58,8 +58,10 @@ def predict_match_winner(model, feature_cols, cat_cols, row_dict, top_k=3):
 def find_default_artifact_paths():
     candidates = [
         Path.cwd(),
+        Path.cwd() / "model_artifacts",
         Path.cwd() / "downloaded",
         Path(__file__).resolve().parent,
+        Path(__file__).resolve().parent / "model_artifacts",
         Path(__file__).resolve().parent / "downloaded",
     ]
 
@@ -177,7 +179,7 @@ def main():
     if not os.path.exists(model_path) or not os.path.exists(meta_path):
         st.warning("Model or metadata file not found.")
         st.info(
-            "Place files in project root or downloaded folder, or update sidebar paths. "
+            "Place files in model_artifacts, project root, or downloaded folder, or update sidebar paths. "
             "Expected files: ipl_winner_catboost.joblib and ipl_model_meta.json"
         )
         st.stop()

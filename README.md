@@ -9,6 +9,7 @@ This project predicts IPL match winners using a trained CatBoost model on match-
 - `model_artifacts/ipl_winner_catboost.joblib`: Trained model weights.
 - `model_artifacts/ipl_model_meta.json`: Model metadata (feature columns, categorical columns, etc.).
 - `matches.csv`: IPL match dataset used locally.
+- `requirements.txt`: Dependencies used by Streamlit Community Cloud deployment.
 - `requirements_streamlit.txt`: Python dependencies for local app.
 - `run_streamlit.bat`: Windows helper to install dependencies and run Streamlit.
 - `smoke_test_model.py`: Quick script to verify model files load and predict.
@@ -51,7 +52,21 @@ streamlit run streamlit_app.py
 
 Open the local URL shown in terminal (usually `http://localhost:8501`).
 
-## 3) Train / Retrain in Google Colab
+## 3) Deploy on Streamlit Community Cloud
+
+1. Push your code to GitHub (already done in this project).
+2. Go to Streamlit Community Cloud and click New app.
+3. Select repository: `haridharshan-dot/ipl-model`.
+4. Set branch: `main`.
+5. Set main file path: `streamlit_app.py`.
+6. Deploy.
+
+Notes:
+- `requirements.txt` is used automatically by Streamlit Cloud.
+- Trained weights are already included in `model_artifacts/`.
+- The app auto-detects model files in `model_artifacts/`, project root, or `downloaded/`.
+
+## 4) Train / Retrain in Google Colab
 
 1. Open `ipl_winner_colab_notebook.ipynb` in Google Colab.
 2. Run all cells in order.
@@ -64,7 +79,7 @@ Open the local URL shown in terminal (usually `http://localhost:8501`).
 
 The Streamlit app auto-detects model files from common locations.
 
-## 4) Quick Model Smoke Test
+## 5) Quick Model Smoke Test
 
 ```bash
 python smoke_test_model.py
@@ -74,7 +89,7 @@ Expected output includes:
 - `SMOKE_TEST_OK`
 - Top predicted teams with probabilities
 
-## 5) How Prediction Works in App
+## 6) How Prediction Works in App
 
 In the app, you choose:
 - Team 1 and Team 2
