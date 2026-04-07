@@ -9,3 +9,8 @@ __pycache__/
 # Optional local data/model files
 *.joblib
 *.pkl
+
+# Keep published model artifacts tracked
+!model_artifacts/
+!model_artifacts/*.joblib
+!model_artifacts/*.json
