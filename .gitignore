@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Local downloaded artifacts
+/downloaded/
+
+# Optional local data/model files
+*.joblib
+*.pkl
